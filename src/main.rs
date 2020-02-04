@@ -4,10 +4,12 @@ pub mod common;
 pub mod simulator;
 
 use board::{Board, Color};
+use simulator::*;
+use simulator::plain_simulator::*;
 
 fn main() {
-    let mut board = Board::new(5);
-    board.set_x_y(2, 3, Color::Red);
-    board.set_x_y(3, 2, Color::Blue);
-    println!("{}", board);
+    let sim = PlainSimulator::new();
+    let board = Board::new(11);
+
+    println!("{}", sim.simulate_many(&board, Color::Red, 200000));
 }
